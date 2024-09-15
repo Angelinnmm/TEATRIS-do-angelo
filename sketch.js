@@ -1,3 +1,23 @@
+let snd;
+
+function preload() {
+  soundFormats('mp3');
+  snd = loadSound("Wild_Pogo.mp3");
+}
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+}
+
+function mouseClicked() {
+  snd.play();
+  snd.loop();
+}
+
 let keyPressUp = false;
 let keyPressDown = false;
 let keyPressLeft = false;
@@ -173,7 +193,7 @@ class Tetris {
     {
       var ty = off + 32;
       var tx = x + w + x / 2;
-      var txtTitle = "TETRIS GAME";
+      var txtTitle = "TETRIS";
       canvas.textAlign(CENTER, CENTER);
       canvas.noStroke();
       canvas.textSize(32);
@@ -185,8 +205,8 @@ class Tetris {
       var ty = canvasH / 2 - 150;
       var tx1 = x + w + x / 2;
       var txtLevel = "LEVEL " + this.level;
-      var txtProgress = "ROW " + this.rowsCompleted + "/" + this.rowsPerLevel;
-      var txtShapes = "SHAPE " + this.shapesCount;
+      var txtProgress = "LINHAS " + this.rowsCompleted + "/" + this.rowsPerLevel;
+      var txtShapes = "PEÇAS " + this.shapesCount;
       canvas.textAlign(CENTER, CENTER);
       canvas.noStroke();
       canvas.fill(200);
@@ -199,7 +219,7 @@ class Tetris {
     }
     // Game status
     var txtGameStatus = undefined;
-    if (this.gameOver) txtGameStatus = "GAME OVER";
+    if (this.gameOver) txtGameStatus = "LIXO";
     if (this.pause) txtGameStatus = "PAUSE";
     if (txtGameStatus !== undefined) {
       canvas.textSize(144);
@@ -219,23 +239,23 @@ class Tetris {
       canvas.noStroke();
       canvas.textSize(14);
       canvas.fill(96);
-      canvas.text("UP", tx1, ty);
-      canvas.text("- ROTATE", tx2, ty);
+      canvas.text("Cima", tx1, ty);
+      canvas.text("- RODAR", tx2, ty);
       ty += 15;
-      canvas.text("LEFT", tx1, ty);
-      canvas.text("- MOVE LEFT", tx2, ty);
+      canvas.text("Esquerda", tx1, ty);
+      canvas.text("- ESQUERDA", tx2, ty);
       ty += 15;
-      canvas.text("RIGHT", tx1, ty);
-      canvas.text("- MOVE RIGHT", tx2, ty);
+      canvas.text("DIREITA", tx1, ty);
+      canvas.text("- DIREITA", tx2, ty);
       ty += 15;
-      canvas.text("DOWN", tx1, ty);
-      canvas.text("- MOVE DOWN", tx2, ty);
+      canvas.text("BAIXO", tx1, ty);
+      canvas.text("- DESCE RAPIDO", tx2, ty);
       ty += 25;
-      canvas.text("SPACE", tx1, ty);
-      canvas.text("- PAUSE", tx2, ty);
+      canvas.text("ESPAÇO", tx1, ty);
+      canvas.text("- PAUSA", tx2, ty);
       ty += 15;
       canvas.text("ENTER", tx1, ty);
-      canvas.text("- RESTART", tx2, ty);
+      canvas.text("- RECOMEÇAR", tx2, ty);
       ty += 15;
     }
   }
